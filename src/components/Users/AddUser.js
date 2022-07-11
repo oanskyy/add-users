@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./AddUser.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
+import ErrorModal from "../UI/ErrorModal";
 
 const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
@@ -18,6 +19,7 @@ const AddUser = (props) => {
     }
     console.log(enteredAge, enteredUsername);
 
+    props.onAddUser();
     // Clear form input from newly entered values and add value=thisnew state on the element
     setEnteredUsername("");
     setEnteredAge("");
@@ -31,25 +33,28 @@ const AddUser = (props) => {
   };
 
   return (
-    <Card className={styles.input}>
-      <form onSubmit={addUserHandler}>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          value={enteredUsername}
-          type="text"
-          onChange={usernameChangedHandler}
-        />
-        <label htmlFor="age">Age</label>
-        <input
-          value={enteredAge}
-          id="age"
-          type="number"
-          onChange={ageChangedHandler}
-        />
-        <Button type="submit">Add User</Button>
-      </form>
-    </Card>
+    <>
+      <ErrorModal title="Error" message="Error wrong"/>
+      <Card className={styles.input}>
+        <form onSubmit={addUserHandler}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            value={enteredUsername}
+            type="text"
+            onChange={usernameChangedHandler}
+          />
+          <label htmlFor="age">Age</label>
+          <input
+            value={enteredAge}
+            id="age"
+            type="number"
+            onChange={ageChangedHandler}
+          />
+          <Button type="submit">Add User</Button>
+        </form>
+      </Card>
+    </>
   );
 };
 
