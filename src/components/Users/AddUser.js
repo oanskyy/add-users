@@ -18,7 +18,7 @@ const AddUser = (props) => {
     }
     console.log(enteredAge, enteredUsername);
 
-    // Clear form input from newly entered values
+    // Clear form input from newly entered values and add value=thisnew state on the element
     setEnteredUsername("");
     setEnteredAge("");
   };
