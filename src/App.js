@@ -17,11 +17,11 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <AddUser onAddUser={addUserHandler} />
       {/* when i use the usersList I need to set the users prop */}
       <UsersList users={usersList} />
-    </div>
+    </>
   );
 }
 
